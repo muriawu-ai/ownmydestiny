@@ -55,7 +55,7 @@
     const { error } = await sb.from("profiles").update({
       display_name: $("fName").value.trim() || null, ig_handle: ig || null, region: $("fRegion").value || null
     }).eq("id", user.id);
-    const { error: e2 } = await sb.rpc("accept_consent", { p_marketing: $("fMarketing").checked });
+    const { error: e2 } = await sb.rpc("accept_consent", { p_marketing: $("fMarketing").checked, p_region: $("fRegion").value || null });
     $("saveMsg").textContent = error || e2 ? "儲存失敗，請稍後再試。" : "已儲存 ✦";
     if (!error && ig) sb.from("activity_log").insert({ user_id: user.id, type: "ig_linked", meta: { ig } });
   });

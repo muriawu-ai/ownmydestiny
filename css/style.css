@@ -248,3 +248,4 @@ textarea.field { resize: vertical; }
 .seg button.on { background: rgba(185,166,255,.16); color: var(--ink); }
 .alt { margin-top: 10px; font-size: 13px; }
 .alt button { background: none; border: 0; color: var(--muted); font: inherit; text-decoration: underline; }
+.modal .lbl-sel { display: block; text-align: left; font-size: 13px; color: var(--muted); margin-bottom: 0; }

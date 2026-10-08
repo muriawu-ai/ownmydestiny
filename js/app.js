@@ -25,7 +25,8 @@
     if (loading) return; loading = true;
     try {
       user = await Auth.currentUser();
-      if (user && !user.profile?.privacy_accepted_at) {
+      if (user && (!user.profile?.privacy_accepted_at || !user.profile?.region)) {
+        if (user.profile?.privacy_accepted_at) { $("agreePrivacy").checked = true; $("agreeMarketing").checked = !!user.profile.marketing_opt_in; }
         $("consentModal").classList.add("show");
       } else if (user) {
         if (!sessionStorage.getItem("mur_login_logged")) { sessionStorage.setItem("mur_login_logged", "1"); sb.rpc("record_login"); }
@@ -313,8 +314,9 @@
 
   // ---- 首次同意 ----
   $("consentOk").addEventListener("click", async () => {
+    if (!$("consentRegion").value) { msg("consentMsg", "請先選擇你所在的地區"); return; }
     if (!$("agreePrivacy").checked) { msg("consentMsg", "請先勾選同意隱私權聲明"); return; }
-    const { error } = await sb.rpc("accept_consent", { p_marketing: $("agreeMarketing").checked });
+    const { error } = await sb.rpc("accept_consent", { p_marketing: $("agreeMarketing").checked, p_region: $("consentRegion").value });
     if (error) { msg("consentMsg", "儲存失敗，請稍後再試。"); return; }
     $("consentModal").classList.remove("show");
     await loadUser();
