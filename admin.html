@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>後台 ✦ ownmydestiny</title>
+  <link rel="icon" href="images/star.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="wrap">
+    <a class="brand" href="index.html"><img src="images/star.svg" alt="">ownmydestiny ・ Admin</a>
+    <nav class="nav"><a class="roll" href="index.html"><span>回前台</span><span>回前台</span></a></nav>
+  </div></header>
+
+  <main>
+    <section class="section" style="padding-top:48px">
+      <div class="wrap">
+        <p id="gate" class="empty-note">載入中…</p>
+        <div id="app" style="display:none">
+          <div class="tabs" id="tabs">
+            <button data-t="bookings" class="on">預約處理</button>
+            <button data-t="slots">時段管理</button>
+            <button data-t="services">服務與價格</button>
+            <button data-t="pay">收款設定</button>
+            <button data-t="notify">發送通知</button>
+          </div>
+
+          <div id="t-bookings" class="tab">
+            <div class="bar"><select class="field" id="bFilter" style="max-width:240px">
+              <option value="open">待處理（待付款／待確認）</option><option value="confirmed">已成立</option><option value="completed">已完成</option><option value="cancelled">已取消</option><option value="all">全部</option></select>
+              <button class="btn" id="bReload">重新整理</button></div>
+            <div id="bList"></div>
+          </div>
+
+          <div id="t-slots" class="tab" style="display:none">
+            <div class="mcard">
+              <h3>新增可預約時段</h3>
+              <select class="field" id="sService"></select>
+              <label class="lbl">開始時間（台灣／香港時間）</label><input class="field" type="datetime-local" id="sStart">
+              <label class="lbl">名額</label><input class="field" type="number" id="sCap" min="1" value="1">
+              <label class="lbl">備註（選填，例如：視訊連結稍後提供／地點）</label><input class="field" id="sNote" maxlength="80">
+              <button class="btn primary" id="sAdd">新增時段</button><p class="msg" id="sMsg"></p>
+            </div>
+            <div id="sList"></div>
+          </div>
+
+          <div id="t-services" class="tab" style="display:none"><div id="svList"></div></div>
+
+          <div id="t-pay" class="tab" style="display:none">
+            <div class="mcard"><h3>台灣收款說明</h3><textarea class="field" id="payTW" rows="6"></textarea>
+              <h3 style="margin-top:18px">香港收款說明</h3><textarea class="field" id="payHK" rows="6"></textarea>
+              <p class="meta">這段文字會顯示在客人的付款頁。請填入 LINE Pay 連結／收款碼說明、銀行帳號、FPS／PayMe 資訊。</p>
+              <button class="btn primary" id="paySave">儲存</button><p class="msg" id="payMsg"></p></div>
+          </div>
+
+          <div id="t-notify" class="tab" style="display:none">
+            <div class="mcard">
+              <h3>手動發送站內通知</h3>
+              <label class="lbl">發送對象</label>
+              <select class="field" id="nTarget"><option value="all">全部會員</option><option value="tier:new">🌱 新會員</option><option value="tier:read">🌙 已解盤會員</option><option value="tier:regular">⭐ 常客</option><option value="email">指定會員（輸入 Email）</option></select>
+              <input class="field" id="nEmail" type="email" placeholder="會員 Email" style="display:none">
+              <input class="field" id="nTitle" maxlength="80" placeholder="標題">
+              <textarea class="field" id="nBody" rows="5" maxlength="1000" placeholder="內容"></textarea>
+              <button class="btn primary" id="nSend">發送</button><p class="msg" id="nMsg"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/bg.js"></script>
+</body>
+</html>

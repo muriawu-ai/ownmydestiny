@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>預約諮詢 ✦ ownmydestiny</title>
+  <link rel="icon" href="images/star.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header"><div class="wrap">
+    <a class="brand" href="index.html"><img src="images/star.svg" alt="">ownmydestiny</a>
+    <nav class="nav"><a class="roll" href="member.html"><span>會員中心</span><span>會員中心</span></a><a class="roll" href="index.html"><span>回首頁</span><span>回首頁</span></a></nav>
+  </div></header>
+
+  <main>
+    <section class="section" style="padding-top:64px">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="label">( Booking )</span>
+          <h2>Book a Session</h2>
+          <span class="zh" id="fromCard">預約諮詢・陪你把混亂變成可以理解的脈絡</span>
+          <div class="rule" style="transform:none"></div>
+        </div>
+
+        <p id="gate" class="empty-note">載入中…</p>
+
+        <!-- 步驟 1：選服務 -->
+        <div id="stepService" style="display:none">
+          <p class="step-title" style="text-align:left">① 選擇服務</p>
+          <div class="grid3" id="serviceList"></div>
+        </div>
+
+        <!-- 步驟 2：時段與資料 -->
+        <div id="stepForm" class="mcard" style="display:none;margin-top:24px">
+          <h3 id="formTitle"></h3>
+          <label class="lbl">② 選擇時段</label>
+          <div id="slotList" class="slots"></div>
+          <div id="peopleBox" style="display:none"><label class="lbl">人數</label><select class="field" id="fPeople"></select></div>
+          <div id="modeBox"><label class="lbl">方式</label><select class="field" id="fMode"></select></div>
+          <label class="lbl">所在地區（決定付款方式）</label>
+          <select class="field" id="fRegion"><option value="TW">台灣</option><option value="HK">香港</option></select>
+          <label class="lbl">想先告訴我的事（選填）</label>
+          <textarea class="field" id="fNote" rows="3" maxlength="500" placeholder="例如：最近在工作與感情之間很掙扎…"></textarea>
+          <p class="price" id="priceLine"></p>
+          <button class="btn primary" id="submitBooking">送出預約</button>
+          <p class="msg" id="formMsg" aria-live="polite"></p>
+        </div>
+
+        <!-- 步驟 3：付款 -->
+        <div id="stepPay" class="mcard" style="display:none;margin-top:24px">
+          <h3>付款與確認</h3>
+          <div id="payInfo"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/bg.js"></script>
+</body>
+</html>

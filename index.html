@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ownmydestiny ✦ 紫微斗數・人生劇本</title>
+  <meta name="description" content="人生不是硬撐，而是順勢借力。抽一張紫微牌，預約你的命盤諮詢。">
+  <link rel="icon" href="images/star.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading">
+  <div class="loader" id="loader"><span>Now loading</span><span id="loaderPct">0%</span></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="images/star.svg" alt="">ownmydestiny</a>
+      <nav class="nav">
+        <a class="hide-m roll" href="#draw"><span>抽牌</span><span>抽牌</span></a>
+        <a class="hide-m roll" href="#workshop"><span>工作坊</span><span>工作坊</span></a>
+        <a class="hide-m roll" href="booking.html"><span>預約諮詢</span><span>預約諮詢</span></a>
+        <a class="roll" href="member.html" id="navMember" style="display:none"><span>會員中心</span><span>會員中心</span></a>
+        <button class="btn" id="loginBtn">登入／註冊</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 最新兩則站內通知（登入後顯示） -->
+  <div class="notices" id="notices" style="display:none">
+    <div class="wrap" id="noticeList"></div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner" id="heroInner">
+        <img class="star" src="images/star.svg" alt="">
+        <p class="label">( Ziwei Doushu )</p>
+        <h1 data-scr>Own My Destiny</h1>
+        <p>人生不是硬撐，而是順勢借力</p>
+        <div class="scroll-cue">SCROLL</div>
+      </div>
+    </section>
+
+    <section class="section" id="draw">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">( Oracle )</span>
+          <h2><span class="no">01.</span><span data-scr>Draw a Card</span></h2>
+          <span class="zh">抽牌・聽聽此刻的風向</span>
+          <div class="rule"></div>
+        </div>
+
+        <p class="step-title rv">① 先選一個你想問的方向</p>
+        <div class="topics rv" id="topics"></div>
+        <p class="hint" id="hint" aria-live="polite"></p>
+
+        <p class="step-title rv">② 靜下心，選一張牌　<span style="opacity:.6">（拖曳轉動，點一張翻開）</span></p>
+        <div class="draw-bar rv">
+          <span id="quota">今日剩餘抽牌次數：—</span>
+          <button class="btn" id="shuffleBtn">重新洗牌</button>
+        </div>
+
+        <div class="arc" id="arc" tabindex="0" role="region" aria-label="紫微斗數牌陣，左右拖曳或用方向鍵換牌"></div>
+        <div class="fan-nav" id="fanNav">
+          <button class="arrow" id="prevBtn" aria-label="上一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span class="fan-hint">DRAG · 拖曳轉動牌陣</span>
+          <button class="arrow" id="nextBtn" aria-label="下一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+
+        <div class="result" id="result" aria-live="polite">
+          <div class="tag" id="rTag"></div>
+          <h3 id="rName"></h3>
+          <p class="lead" id="rLead"></p>
+          <p class="line" id="rLine"></p>
+          <div class="actions">
+            <a class="btn primary" id="rBook" href="booking.html">預約諮詢</a>
+            <a class="btn" id="rChat" href="booking.html">跟 Mur 聊聊</a>
+            <button class="btn" id="rAgain">再抽一張</button>
+          </div>
+          <p class="tiny">運程短句僅供啟發與參考，並非預測，人生的選擇始終在你手上。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 每月調頻工作坊：只要開放報名就顯示 -->
+    <section class="section" id="workshop">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">( Workshop )</span>
+          <h2><span class="no">02.</span><span data-scr>Monthly Alignment</span></h2>
+          <span class="zh">每月調頻工作坊・90 分鐘，和同頻的人一起校準方向</span>
+          <div class="rule"></div>
+        </div>
+        <div class="grid3" id="wsList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="ig">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="label">( Instagram )</span>
+          <h2><span class="no">03.</span><span data-scr>Moments</span></h2>
+          <span class="zh">精選貼文・<a href="https://www.instagram.com/ownmydestiny/" target="_blank" rel="noopener" style="color:var(--accent)">@ownmydestiny</a></span>
+          <div class="rule"></div>
+        </div>
+        <div class="grid3" id="igList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© ownmydestiny ・ <a href="privacy.html" class="roll"><span>隱私權聲明</span><span>隱私權聲明</span></a></div>
+  </footer>
+
+  <!-- 登入視窗：Email + 密碼 -->
+  <div class="modal" id="loginModal" role="dialog" aria-modal="true">
+    <div class="box">
+      <h3 id="authTitle">登入</h3>
+      <div class="seg"><button id="tabIn" class="on">登入</button><button id="tabUp">註冊新帳號</button></div>
+      <input class="field" id="emailInput" type="email" placeholder="Email" autocomplete="email">
+      <input class="field" id="pwInput" type="password" placeholder="密碼（至少 8 個字）" autocomplete="current-password" minlength="8">
+      <button class="btn primary wide" id="authGo">登入</button>
+      <p class="msg" id="loginMsg" aria-live="polite"></p>
+      <p class="alt"><button id="linkLogin">改用 Email 登入連結</button></p>
+      <div class="row"><button class="btn" id="closeModal">取消</button></div>
+    </div>
+  </div>
+
+  <!-- 首次登入：隱私權聲明與行銷同意 -->
+  <div class="modal" id="consentModal" role="dialog" aria-modal="true">
+    <div class="box">
+      <h3>歡迎加入</h3>
+      <p>開始之前，請先確認以下內容。</p>
+      <label><input type="checkbox" id="agreePrivacy"> 我已閱讀並同意 <a href="privacy.html" target="_blank" style="color:var(--accent)">隱私權聲明</a>（必填）</label>
+      <label><input type="checkbox" id="agreeMarketing"> 我願意收到 Email 行銷訊息（選填；未勾選仍會收到站內通知）</label>
+      <p class="msg" id="consentMsg" aria-live="polite"></p>
+      <div class="row">
+        <button class="btn primary" id="consentOk">完成註冊</button>
+        <button class="btn" id="consentCancel">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/bg.js"></script>
+</body>
+</html>
